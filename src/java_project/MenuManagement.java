@@ -1,17 +1,40 @@
 package java_project;
 
-public class MenuManagement {
-	public static void main(String[] args){
-		//println으로 인사관리 메뉴가 한 문장씩 출력되도록 한다.
-		System.out.println("Employee Management System");
-        System.out.println("1. View Employee List"); 			//인사목록
-        System.out.println("2. View Employee Details");			//상세정보
-        System.out.println("3. Manage Employee Attendance");	//출퇴근관리 
-        System.out.println("4. Manage Employee Salary");		//급여관리
-        System.out.println("5. Update Employee Information");	//갱신
-        System.out.println("6. Add New Employee");				//직원추가
-        System.out.println("7. Remove Employee");				//직원삭제
-        System.out.println("8. Exit");							//메뉴 나가기
-	}
+import java.util.Scanner;
 
+public class MenuManagement {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		EmployeeManager employeeManager = new EmployeeManager(input);
+		int num = -1;
+		while(num != 5) {
+			System.out.println("***Employee Management System***");
+			System.out.println("1. Add Employee");
+			System.out.println("2. Delete Employee");
+			System.out.println("3. Edit Employee");
+			System.out.println("4. View Employee");
+			System.out.println("5. Exit");
+			System.out.print("Select options between 1-5: ");
+			num = input.nextInt();
+			if(num==1) {
+				employeeManager.addEmployee();
+			}
+			else if(num == 2) {
+				employeeManager.deleteEmployee();
+			}
+			else if(num == 3) {
+				employeeManager.editEmployee();
+			}
+			else if(num == 4) {
+				employeeManager.viewEmployees();			
+			}
+			else {
+				continue;
+			}	
+		}
+	}
 }
+
+
